@@ -1,0 +1,3 @@
+(executable
+ (name main)
+ (libraries ReqCheck cohttp-lwt-unix yojson angstrom))
