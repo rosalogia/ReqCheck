@@ -13,22 +13,26 @@ let get s =
         body
         |> Cohttp_lwt.Body.to_string
 
-let getJson s = Yojson.Safe.from_file s
+let getJson s =
+    try Some (Yojson.Safe.from_file s)
+    with Yojson.Json_error (_) -> None
 
-let reqUrl = "https://sis.rutgers.edu/oldsoc/courses.json?subject=198&semester=12020&campus=NB&level=UG"
-
-let course_info = 
+let course_info s = 
     let open Yojson.Safe.Util in
-    let course_list =
-        [getJson "courses.json"]
-        |> flatten in
-    let course_names =
-        course_list
-        |> filter_member "course_title"
-        |> filter_string in
-    let course_prereqs =
-        course_list
-        |> filter_member "course_requirements"
-        |> filter_string
-        |> List.map (Str.global_replace (Str.regexp "</?em>") "") in
-    zip course_names course_prereqs
+    let json = getJson s in
+    match json with
+    | Some course_info ->
+        let course_list =
+            [course_info]
+            |> flatten in
+        let course_names =
+            course_list
+            |> filter_member "course_title"
+            |> filter_string in
+        let course_prereqs =
+            course_list
+            |> filter_member "course_requirements"
+            |> filter_string
+            |> List.map (Str.global_replace (Str.regexp "</?em>") "") in
+        Some (zip course_names course_prereqs)
+    | None -> None
