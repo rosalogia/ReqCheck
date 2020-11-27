@@ -29,8 +29,8 @@ let p_coursecode =
 
 let rec print_coursereq = function
     | CourseCode (s, _) -> Printf.sprintf "%s" s
-    | Or (l) -> sprintf "Or [%s]" (List.map print_coursereq l |> String.concat "; ")
-    | And (l) -> sprintf "And [%s]" (List.map print_coursereq l |> String.concat "; ")
+    | Or (l) -> String.concat " or " (List.map print_coursereq l) |> sprintf "(%s)"
+    | And (l) -> String.concat " and " (List.map print_coursereq l) |> sprintf "(%s)"
     | Empty -> "None"
 
 let p_requirements =
@@ -40,7 +40,7 @@ let p_requirements =
             let preqs = choice [p_and ; p_or ; p_coursecode] in
             preqs <|> parens preqs)
 
-let test p s =
-    match parse_string ~consume:Prefix p (String.lowercase_ascii s) with
-    | Result.Ok (res) -> sprintf "%s\n" (print_coursereq res)
-    | Result.Error (e) -> sprintf "Error%s\n" e
+let parse_requirements s =
+    match parse_string ~consume:Prefix p_requirements (String.lowercase_ascii s) with
+    | Result.Ok (res) -> Some res
+    | Result.Error (_) -> None
