@@ -11,6 +11,27 @@ let course_data fpath =
     | Some course_info -> Some (course_info |> List.filter_map choose_valid_course)
     | None -> None
 
+let course_data_handler request =
+    match Request.query "school" request with
+    | Some (school_name) ->
+            (let course_json_path =
+                school_name
+                |> String.lowercase_ascii
+                |> sprintf "./files/%s.json" in
+            match Request.query "courses" request with
+            | Some (course_list) ->
+                    (let courses_taken = String.split_on_char ',' course_list in
+                    match course_data course_json_path with
+                    | Some (data) ->
+                            data
+                            |> List.filter (Compute.allowed courses_taken)
+                            |> List.map (Parser.print_coursereq)
+                            |> List.map (fun s -> `String (s))
+                            |> fun l -> Lwt.return (Response.of_json ~status:(Status.of_code 200) (`List (l)))
+                    | None -> Lwt.return (Response.of_json ~status:(Status.of_code 200) (Yojson.Safe.from_file course_json_path)))
+            | None -> Lwt.return (Response.of_json ~status:(Status.of_code 200) (Yojson.Safe.from_file course_json_path)))
+    | None -> Lwt.return (Response.of_plain_text ~status:(Status.of_code 400) "400 Bad Request")
+
 let upload_handler request =
   let open Lwt.Syntax in
   let files = Hashtbl.create ~random:true 5 in
@@ -60,19 +81,23 @@ let upload_handler request =
 (*     (1*         | _ -> "None") *1) *)
 (*     (1* |> List.iter print_endline; *1) *)
 
-(*     print_endline "The list of courses you'll be able to take next semester is as follows:\n"; *)
 
 (*     let student = *)
 (*         read_line () *)
 (*         |> Str.split (Str.regexp " ; ") in *)
         
-(*     course_data *)
-(*     |> List.filter (Compute.allowed student) *)
-(*     |> List.map Parser.print_coursereq *)
-(*     |> List.iter print_endline *)
+(*     print_endline "The list of courses you'll be able to take next semester is as follows:\n"; *)
+
+(*     match course_data "courses.json" with *)
+(*     | Some (data) -> *)
+(*             data *)
+(*             |> List.filter (Compute.allowed student) *)
+(*             |> List.map Parser.print_coursereq *)
+(*             |> List.iter print_endline *)
+(*     | None -> print_endline "Error: JSON invalid" *)
 
 let () =
     App.empty
-    (* |> App.get "/" index_handler *)
     |> App.post "/upload" upload_handler
+    |> App.get "/allowed" course_data_handler
     |> App.run_command
