@@ -7,7 +7,7 @@ A flexible command-line program to determine which university courses are or wil
 ReqCheck is built using `dune`, the OCaml build tool. Make sure you have OCaml as well as dune installed.
 
 ```
-$ opam install --deps-only .
+$ make install
 $ dune build
-$ ./_build/default/bin/main.exe
+$ make run
 ```

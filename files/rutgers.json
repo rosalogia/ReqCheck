@@ -1,0 +1,119 @@
+[
+   {
+      "course_title":"01:198:107 - Computing for Math and the Sciences",
+      "course_requirements":"(01:640:135 ) OR (01:640:151)"
+   },
+   {
+      "course_title":"01:198:111 - Introduction to Computer Science",
+      "course_requirements":"(01:640:115)"
+   },
+   {
+      "course_title":"01:198:112 - Data Structures",
+      "course_requirements":"((01:198:111  or 14:332:252 ) and (01:640:151 or 01:640:135))"
+   },
+   {
+      "course_title":"01:198:205 - Introduction to Discrete Structures I",
+      "course_requirements":"(01:198:111  or 14:332:252 ) and (01:640:152)"
+   },
+   {
+      "course_title":"01:198:206 - Introduction to Discrete Structures II",
+      "course_requirements":"(01:198:205  or 14:332:202) and (01:640:152)"
+   },
+   {
+      "course_title":"01:198:211 - Computer Architecture",
+      "course_requirements":"(01:198:112) OR (14:332:351)"
+   },
+   {
+      "course_title":"01:198:213 - Software Methodology",
+      "course_requirements":"(01:198:112)"
+   },
+   {
+      "course_title":"01:198:214 - Systems Programming",
+      "course_requirements":"(01:198:112) and (01:198:211)"
+   },
+   {
+      "course_title":"01:198:314 - Principles of Programming Languages",
+      "course_requirements":"((01:198:211) or (14:332:331)) AND ((01:198:205) or (14:332:312))"
+   },
+   {
+      "course_title":"01:198:323 - Numerical Analysis and Computing",
+      "course_requirements":"(01:640:152) AND (01:640:250)"
+   },
+   {
+      "course_title":"01:198:324 - Numerical Methods",
+      "course_requirements":"(01:198:323) OR (01:640:373)"
+   },
+   {
+      "course_title":"01:198:334 - Introduction to Imaging and Multimedia",
+      "course_requirements":"((01:198:112) or (14:332:351)) AND ((01:198:206) or (14:332:226) or (01:640:477)) AND (01:640:250)"
+   },
+   {
+      "course_title":"01:198:336 - Principles of Information and Data Management",
+      "course_requirements":"(01:198:112) AND ((01:198:205) or (14:332:312))"
+   },
+   {
+      "course_title":"01:198:344 - Design and Analysis of Computer Algorithms",
+      "course_requirements":"(01:198:112) AND (01:198:206)"
+   },
+   {
+      "course_title":"01:198:352 - Internet Technology",
+      "course_requirements":"((01:198:211) or (14:332:331)) AND ((01:198:206) or (01:640:477) or (14:332:321) or (14:332:226))"
+   },
+   {
+      "course_title":"01:198:411 - Computer Architecture II",
+      "course_requirements":"(01:198:211) or (14:332:331)"
+   },
+   {
+      "course_title":"01:198:415 - Compilers",
+      "course_requirements":"((01:198:211) or (14:332:331)) AND (01:198:314)"
+   },
+   {
+      "course_title":"01:198:416 - Operating Systems Design",
+      "course_requirements":"(01:198:214)"
+   },
+   {
+      "course_title":"01:198:417 - Distributed Systems: Concepts and Design",
+      "course_requirements":"(01:198:416)"
+   },
+   {
+      "course_title":"01:198:419 - Computer Security",
+      "course_requirements":"(01:198:205) AND ((01:198:416) or (01:198:352))"
+   },
+   {
+      "course_title":"01:198:424 - Modeling and Simulation of Continuous Systems",
+      "course_requirements":"(01:198:323) or (01:640:373)"
+   },
+   {
+      "course_title":"01:198:425 - Brain-Inspired Computing",
+      "course_requirements":"(01:198:206) AND (01:640:152)"
+   },
+   {
+      "course_title":"01:198:428 - Introduction to Computer Graphics",
+      "course_requirements":"((01:198:112) or (14:332:351)) AND (01:640:152) AND (01:640:250)"
+   },
+   {
+      "course_title":"01:198:431 - Software Engineering",
+      "course_requirements":"(01:198:213) AND ((01:198:336) or (01:198:314) or (01:198:352) or (01:198:416))"
+   },
+   {
+      "course_title":"01:198:437 - Database Systems Implementation",
+      "course_requirements":"(01:198:214) AND (01:198:336)"
+   },
+   {
+      "course_title":"01:198:439 - Introduction to Data Science",
+      "course_requirements":"(01:198:205)"
+   },
+   {
+      "course_title":"01:198:440 - Introduction to Artificial Intelligence",
+      "course_requirements":"(01:198:205)"
+   },
+   {
+      "course_title":"01:198:452 - Formal Languages and Automata",
+      "course_requirements":"(01:198:344)"
+   },
+   {
+      "course_title":"01:198:460 - Introduction to Computational Robotics",
+      "course_requirements":"(01:198:206)"
+   }
+]
+

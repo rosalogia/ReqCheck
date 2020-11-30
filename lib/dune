@@ -1,4 +1,4 @@
 (library
  (name ReqCheck)
  (public_name ReqCheck)
- (libraries str cohttp-lwt-unix yojson angstrom))
+ (libraries str yojson angstrom))

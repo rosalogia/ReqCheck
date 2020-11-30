@@ -8,10 +8,10 @@
 
 (package
  (name ReqCheck)
- (synopsis "A personalised course pre-requisite identifying program")
- (description "A flexible command-line program to determine which university courses are or will be available to you based on which courses you've already taken")
+ (synopsis "A Rutgers CS/Math course availability API")
+ (description "A light-weight web API to show Rutgers Computer Science students what CS and Math courses they're eligible for in the coming semester")
  (depends
-  (cohttp (>= 2.5.4))
-  (yojson (>= 1.7.0))
+  (yojson   (>= 1.7.0))
+  (logs     (>= 0.7.0))
   (angstrom (>= 0.15.0))))
 
