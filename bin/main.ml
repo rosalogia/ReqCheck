@@ -21,9 +21,16 @@ let json_list_of (strings: string list) =
     |> List.map (fun s -> `String (s))
     |> (fun l -> `List (l))
 
-let bad_request = Response.of_json ~status:(Status.of_code 400) (`Assoc [("error", `String ("Bad Request"))])
+let access_control_allow_origin = Response.add_header ("Access-Control-Allow-Origin", "*")
+    
 
-let json_ok v = Response.of_json ~status:(Status.of_code 200) v
+let bad_request =
+    Response.of_json ~status:(Status.of_code 400) (`Assoc [("error", `String ("Bad Request"))])
+    |> access_control_allow_origin
+
+let json_ok v =
+    Response.of_json ~status:(Status.of_code 200) v
+    |> access_control_allow_origin
 
 let all_handler _ =
     Data.course_data_json
